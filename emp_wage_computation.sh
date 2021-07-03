@@ -8,3 +8,19 @@ then
 else
 	echo "emp is absent"
 fi
+
+#uc_2
+isparttime=1;
+isfulltime=2;
+emprateperhr=20;
+check=$((RANDOM%3))
+if [ $isfulltime -eq $check ]
+then
+		emphrs=8;
+elif [ $isparttme -eq $check ]
+then
+		emphrs=4;
+else
+		emphrs=0;
+fi
+salary=$(($emphrs*$emprateperhr))
