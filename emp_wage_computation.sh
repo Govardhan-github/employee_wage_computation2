@@ -28,6 +28,6 @@ function getworkhrs() {
 totalemphrs=$(($totalemphrs+$emphrs))
 done
 totalsalary=$(($totalemphrs*$EMP_RATE_PER_HR))
-echo "$totalsalary"
+echo "$totalmonthsalary"
 
 
