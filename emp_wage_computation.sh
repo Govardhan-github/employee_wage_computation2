@@ -10,16 +10,13 @@ else
 fi
 
 #uc_2
-isparttime=1;
-isfulltime=2;
+isparttime=2;
+isfulltime=1;
 emprateperhr=20;
-check=$((RANDOM%3))
+check=$((RANDOM%2))
 if [ $isfulltime -eq $check ]
 then
 		emphrs=8;
-elif [ $isparttme -eq $check ]
-then
-		emphrs=4;
 else
 		emphrs=0;
 fi
