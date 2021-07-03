@@ -1,22 +1,18 @@
 #!/bin/bash -x
 echo "Welcome to Employee Wage Computation Program"
-#uc_1
-check=$((RANDOM%2))
-if [ $check -eq 1 ]
-then
-	echo "emp is present"
-else
-	echo "emp is absent"
-fi
 
+
+isparttime=1
+isfulltime=2
+totalsalary=0
+emprateperhr=20
+numofworkingdays=20
 #uc_2 and uc_3 and uc_3
+for((day=1; day<=$numofworkingdays; day++))
+do
+	check=$((RANDOM%3))
 
-isparttime=1;
-isfulltime=2;
-emprateperhr=20;
-check=$((RANDOM%3))
-
-case $check in
+	case $check in
 	$isfulltime)
 		emphrs=8
 	;;
@@ -28,3 +24,6 @@ case $check in
 	;;
 	esac
 salary=$(($emphrs*$emprateperhr))
+totalsalary=$(($totalsalary+$salary))
+echo "$totalsalary"
+done
