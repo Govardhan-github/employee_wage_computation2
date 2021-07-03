@@ -11,8 +11,7 @@ NUM_WORKING_DAYS=20
 totalemphrs=0
 totalworkingdays=0
 #uc_2 and uc_3 and uc_3
-while(($(($day<21))&&(($hours<=100))))
-do
+function getworkhrs() {
 	check=$((RANDOM%3))
 
 	case $check in
