@@ -1,33 +1,44 @@
 #!/bin/bash -x
 echo "Welcome to Employee Wage Computation Program"
-
-#CONSTANTS FOR THE PROGRAM
-IS_PART_TIME=1
-IS_FULL_TIME=2
-MAX_HRS_IN_MONTH=10
-EMP_RATE_PER_HR=20
-NUM_WORKING_DAYS=20
-
-totalemphrs=0
-totalworkingdays=0
-#uc_2 and uc_3 and uc_3
-function getworkhrs() {
-	check=$((RANDOM%3))
-
-	case $check in
-	$isfulltime)
-		emphrs=8
-	;;
-	$isparttime)
-		emphrs=4
-	;;
-	*)
-		emphrs=0
-	;;
+a=$((RANDOM%3))
+Wage_per_hour=20
+Total_Month_Wage=0
+Day_hour=8
+Part_time=4
+Total_Wage=1
+day=1
+hours=0
+declare -A PA
+while (($(($day<21))&&$(($hours<=100))))
+do
+	a=$((RANDOM%3))
+	case $a in
+		1)
+			empHrs=8
+			P="Present"
+		;;
+		2)
+			empHrs=4
+			P="Present"
+		;;
+		*)
+			empHrs=0
+			P="Absent "
+		;;
 	esac
-totalemphrs=$(($totalemphrs+$emphrs))
+		empHrstemp[$((day-1))]=$empHrs
+		PA[$((day-1))]=$P
+		hours=$((hours+empHrs))
+		Total_Wage=$(($empHrs*$Wage_per_hour))
+		Total_Month_Wage=$((Total_Month_Wage+Total_Wage))
+		Month_Wage[$((day-1))]=$Total_Month_Wage
+	day=$((day+1))
 done
-totalsalary=$(($totalemphrs*$EMP_RATE_PER_HR))
-echo "$totalmonthsalary"
-
+echo "Total Month Wages : $Total_Month_Wage"
+echo "Total hours : $hours"
+echo "Day           Present/Absent           Work Hours       Total Month Wage"
+for((i=0;i<${#Month_Wage[@]};i++))
+do
+	echo "$((i+1))               ${PA[$i]}                   ${empHrstemp[$i]}                   ${Month_Wage[$i]}"
+done
 
